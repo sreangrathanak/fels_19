@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Fels19</title>
+<head>	
+  <title>
+  	<%#Show the title when call%>
+  	<%= yield(:title) %> | E-Learning System
+  	</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%#Looking for file  name _shim.html.erb at app.view/layouts%>
+  <%=render 'layouts/shim'%>
 </head>
 <body>
+<%#Looking for file  name _header.html.erb at app.view/layouts%>
+<%=render('layouts/header')%>
 
-<%= yield %>
+<div class="container">
+  <%= yield %>
+  <%#Looking for file  name _footer.html.erb at app.view/layouts%>
+  <%= render 'layouts/footer' %>
+</div>
 
 </body>
 </html>
