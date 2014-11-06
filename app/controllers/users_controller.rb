@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @user=User.new user_params
     #if we can save the user
     if @user.save
+        #call log_in method to make a user sign up success login automatically
         #set the flash methods with success message
         flash[:success]="Welcome to the E-Learning System"
         #link to the user profile
