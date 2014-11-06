@@ -29,6 +29,8 @@ class UsersController < ApplicationController
     #if we can save the user
     if @user.save
         #call log_in method to make a user sign up success login automatically
+        #call the methos log_in which locate at app/helper/sessions_helper that we use to store the user id
+        log_in @user
         #set the flash methods with success message
         flash[:success]="Welcome to the E-Learning System"
         #link to the user profile
