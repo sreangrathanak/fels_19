@@ -18,7 +18,7 @@ def current_user
 		user=User.find_by(id:user_id)
 		#after that check if we can find the user or not
 		#if we find the use let compare the user remember digest and cookied remember_token
-		if user && user.authenicated?(cookies[:remember_token])
+		if user && user.authenticated?(cookies[:remember_token])			            
 			#if match
 			#call log in method
 			log_in user
