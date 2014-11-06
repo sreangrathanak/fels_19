@@ -59,4 +59,21 @@ def forget user
 	#delete user remember_token in cookies
 	cookies.delete(:remember_token)
 end
+#define method to check weather user is current user
+def current_user? user
+	#Return true if the given user is the currect user
+	user==current_user	
+end
+#Redirects to stored location (or to default).
+def redirect_back_or default
+	#redirect to session with forwarding key or with default
+	redirect_to(session[:forwarding_url] || default)
+	#delete the session with the forwarding_url key
+	session.delete(:forwarding_url)
+end
+#Store the URL trying to be accessed.
+def store_location
+	#set the session with forwarding_url key from request url if user have request is true
+	session[:forwarding_url]=request.url if request.get?
+end
 end

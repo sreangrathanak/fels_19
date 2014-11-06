@@ -12,8 +12,8 @@ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 validates :email, presence: true, length:{maximum: 80},format: {with:VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
 #add method has secure password for make password more secure
 has_secure_password
-#user password must have and have length at leave 6 charater
-validates :password, length: {minimum: 6}
+#user password must have and have length at leave 6 charater, and the user password can be blank
+validates :password, length: {minimum: 6}, allow_blank: true
 
 #define the method for the return of user password in string to make more secure
 def User.digest(string)

@@ -16,11 +16,11 @@ class SessionsController < ApplicationController
   		#or else if not check call the method forget which locate at app/helper/sessions_helper which function is used to remove remember token
   		params[:session][:remember_me] == '1' ? remember(user) : forget(user)
   		#params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-  		#link to the user profile
-  		redirect_to user
+  		#call redirect_bacl_or from app/helper/session_helper
+  		redirect_back_or user
   	else #or else
   		#show the message of wrong login
-  		flash[:danger]='Invalid email/password combination'
+  		flash.now[:danger]='Invalid email/password combination'
   	#load the new action
   	render 'new' 	
     end
