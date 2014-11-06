@@ -6,7 +6,30 @@
       <ul class="nav navbar-nav pull-right">
         <li><%= link_to "Home",   root_path %></li>
         <li><%= link_to "Help",   help_path %></li>
-        <li><%= link_to "Log in", "#" %></li>
+        <%#check if user is logged in or not by use method which define in app/helper/session_helper%>
+        <%if logged_in?%>
+        <%#if the user is loggin than show%>
+          <li><%=link_to "Users",'#'%></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Account<b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <%#show the user link for go to their profile%>
+              <li><%=link_to "Profile",current_user%></li>
+              <%#show the user link for go to their sitting for edit and update%>
+              <li><%=link_to "Settings",'#'%></li>
+              <li class="divider"></li>
+              <li>
+                <%#show the user link for log out their profile%>
+                <%=link_to "Log out",logout_path,method:"delete"%>
+              </li>
+            </ul>
+          </li>
+        <%else%>          
+          <%#if not logged in yet show only the log in link%>
+          <li><%= link_to "Log in", login_path %></li>
+        <%end%>  
       </ul>
     </nav>
   </div>
