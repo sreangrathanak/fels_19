@@ -13,3 +13,7 @@ User.create!(name:  "Rathanak Jame",
                password:              password,
                password_confirmation: password)
 end
+10.times do |n|
+  name="Rathanak-#{n+1} Category"
+  Category.create(name: name)
+end
