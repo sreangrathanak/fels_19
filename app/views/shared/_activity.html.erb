@@ -1,0 +1,9 @@
+<!--check if have any feed-->
+<% if @activity_lessons.any? %>
+  <ol class="lessons">
+  <!--render the activity lesson-->
+    <%= render @activity_lessons %>
+  </ol>
+  <!--show the activity lesson with slide bar-->
+  <%= will_paginate @activity_lessons %>
+<% end %>

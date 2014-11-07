@@ -1,0 +1,10 @@
+<!--show user picture with its size-->
+<%= link_to gravatar_for(current_user, size: 50), current_user %>
+<!--show user name-->
+<h1><%= current_user.name %></h1>
+<!--show the link to user profile-->
+<span><%= link_to "view my profile", current_user %></span>
+<!--count user learned words-->
+<!--user current_user.countword which countword method is locate at user model-->
+<span>Learned <%= current_user.countword current_user.lessons %> words</span>
+

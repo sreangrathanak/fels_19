@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+#make has many relationship with Lesson
+has_many :lessons	
 #create the accessible attribut remember_token
 attr_accessor :remember_token
 #use method before save to run before save for convert the email into lower case
@@ -45,5 +47,18 @@ end
 def forget
 	#update the attibute remember digest with empty
 	update_attribute(:remember_digest,nil)
+end
+#use for showing feed activities of user
+def activity
+    # This is preliminary. See "" for the full implementation.
+    Lesson.where("user_id = ?", id)
+end
+#method use to count user learen word
+def countword lessons
+	count=0
+	lessons.each{|lesson|
+	count+=	lesson.lesson_words.count
+	}
+	count
 end
 end

@@ -4,4 +4,5 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   #add the SessionsHelper which locate at app/helpers/sessions_helper
   include SessionsHelper
+  
 end

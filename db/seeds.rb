@@ -48,7 +48,7 @@ words=Word.order(:created_at)
   }
 end
 #get lesson
-lessons= Lesson.order(:created_at).take(1)
+lessons= Lesson.order(:created_at).take(2)
 #get word answer
 word_answers=WordAnswer.order(:created_at)
 #LessonWord

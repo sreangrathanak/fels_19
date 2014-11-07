@@ -22,6 +22,8 @@ class UsersController < ApplicationController
   	@user=User.find(params[:id])
   	#user for debug when program have some problem and we wanna test
   	#debugger
+    #declare user lesson to get all their lesson
+     @lessons = @user.lessons.paginate(page: params[:page])
   end
   def create
     #declare the user  which it attribute come from all value fill from the user by call method in private section
