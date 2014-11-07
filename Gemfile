@@ -36,7 +36,6 @@ gem "sdoc", "~> 0.4.0",          group: :doc
 gem "spring",        group: :development
 #Use for have secure password
 gem "bcrypt-ruby", "3.1.1.rc1", :require => "bcrypt"
-
 # Use unicorn as the app server
 gem "unicorn"
 

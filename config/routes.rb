@@ -1,17 +1,16 @@
-Rails.application.routes.draw do
 
+Rails.application.routes.draw do
   root "static_pages#home" 
   get "help"    => "static_pages#help"
   get "about"   => "static_pages#about"
   get "contact" => "static_pages#contact"
-
   #get 'users/new'
-  get 'signup'  => 'users#new'
+  get "signup"  => "users#new"
   #make route for user login out out
   #get 'sessions/new'
-  get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
+  get "login" => "sessions#new"
+  post "login" => "sessions#create"
+  delete "logout" => "sessions#destroy"
   #to make users have full ability like: index,delete,post ,get, update
   resources :users
 
