@@ -5,15 +5,15 @@
   	<%#Show the title when call%>
   	<%= yield(:title) %> | E-Learning System
   	</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <%#Looking for file  name _shim.html.erb at app.view/layouts%>
-  <%=render 'layouts/shim'%>
+  <%=render "layouts/shim"%>
 </head>
 <body>
 <%#Looking for file  name _header.html.erb at app.view/layouts%>
-<%=render('layouts/header')%>
+<%=render("layouts/header")%>
 
 <div class="container">
   <%#get the value in flash and assign each of them in message_type and message%>
@@ -26,7 +26,7 @@
   <%#show the debug if on the development enviroment%>
   <%= debug(params) if Rails.env.development? %>
   <%#Looking for file  name _footer.html.erb at app.view/layouts%>
-  <%= render 'layouts/footer' %>
+  <%= render "layouts/footer" %>
 </div>
 
 </body>
