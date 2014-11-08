@@ -53,12 +53,4 @@ def activity
     # This is preliminary. See "" for the full implementation.
     Lesson.where("user_id = ?", id)
 end
-#method use to count user learen word
-def countword lessons
-	count=0
-	lessons.each{|lesson|
-	count+=	lesson.lesson_words.count
-	}
-	count
-end
 end

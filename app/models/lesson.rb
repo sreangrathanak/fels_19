@@ -5,8 +5,6 @@ class Lesson < ActiveRecord::Base
   belongs_to :user
   #make ralationship with category
   belongs_to :category
-  #order by date
-  default_scope->{order('created_at DESC')}
   #make sure user id is valied
   validates :user_id, presence: true
   #make sure category id is valied

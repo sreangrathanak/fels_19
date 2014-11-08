@@ -8,22 +8,8 @@
         <%= gravatar_for @user %>
         <%= @user.name %>        
       </h1>
-      <!--user @user.countword which countword method is locate at user model-->
-          <span>Learned <%= @user.countword @user.lessons %> words</span>
     </section>
   </aside>
   <div class="col-md-8">
-    <!--check if user have learned any lesson-->
-    <% if @user.lessons.any? %>
-      <h3>Activities</h3>
-      <!--
-      <h3>Lessons (<%#= @user.lessons.count %>)</h3>
-      -->
-      <!--if have show the infomation about their learning-->
-      <ol class="lessons">
-        <%= render @lessons %>
-      </ol>
-      <%= will_paginate @lessons %>
-    <% end %>
   </div>
 </div>
