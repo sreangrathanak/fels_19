@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"
   resources :categories
-  resources :lessons;
+  resources :lessons
+  resources :words
+  resources :lesson_words
   #to make users have full ability like: index,delete,post ,get, update
   resources :users
 

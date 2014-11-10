@@ -1,0 +1,25 @@
+<!--set lesson title bar-->
+<% provide(:title, @category.name)%>
+<h3><%=@category.name%></h3>
+<p><i>You have learned <%= current_user.max_result current_user.lessons.where(id:@category.id) %> / <%=@category.words.count%> words</i></p>
+<%#words=@lesson.category.words%>
+
+<div class="row">
+ 	 <div class="col-md-5 col-md-offset-3">
+ 	 	<div class = "col-sm-10">
+ 	 		<%= form_for @word do |f| %>	
+ 	 			<%#hiden form%>		
+				<h1><%#=@word.content%>	
+				<%= f.label :content,@word.content %>
+				</h1>
+			<% end %>
+			<%= form_tag(@category, method: :get) do %>	
+									
+					<%@word_answers.each do |word_answer|%>
+			  		<%= submit_tag "#{word_answer.content}"%>  	
+			  		<%end%>
+			<% end %>
+		</div>
+	</div>
+</div>
+

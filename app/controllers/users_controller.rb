@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   #user methods before_action to check that user is logged in or not before they can view, edit, update or delete user profile
-  before_action :logged_in_user, only:[:index, :edit, :update,:destroy]
+  before_action :logged_in_user, only:[:index, :edit, :update,:destroy, :show]
   #user methods before_action to check that user is correct in or not before they can edit or update user profile
   before_action :correct_user,   only: [:edit, :update]
   #set permission to admin user
@@ -78,18 +78,19 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
     end
-    #Confirms a logged in user
-    def logged_in_user
-      #check if user logged_in is true
-      unless logged_in?
-        #call the method store_location which locat at app/helper/session_helper
-        store_location
-        #set the flash message with danger key
-        flash[:danger]="Please log in."
-        #link to loggin page
-        redirect_to login_url
-      end
-    end
+    #Move to ApplicationHelper
+    ##Confirms a logged in user
+    #def logged_in_user
+    #  #check if user logged_in is true
+    #  unless logged_in?
+    #    #call the method store_location which locat at app/helper/session_helper
+    #    store_location
+    #    #set the flash message with danger key
+    #    flash[:danger]="Please log in."
+    #    #link to loggin page
+    #    redirect_to login_url
+    #  end
+    #end
     #Confirms the correct user.
     def correct_user
       #user assign from User table by find from the id that get from page

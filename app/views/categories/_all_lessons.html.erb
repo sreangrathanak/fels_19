@@ -1,0 +1,17 @@
+<!--Show all lesson-->
+<% @categories.each do |category| %>
+    <div class = "">
+    	<!--category name-->
+        <h3><%= category.name %></h3>
+        <!--lesson infomation-->
+        <p><i>You have learned <%= current_user.max_result current_user.lessons.where(id:category.id) %> / <%=category.words.count%> words</i></p>
+        <!--get all words in category-->
+        <%words=category.words%>
+        <% words.each do |word|%>
+        <!--show all word in each category-->
+        <p><%= word.content %></p>
+        <%end%>
+    </div>
+    <!--link to that lesson-->
+    <%= link_to "Start", category, class: "" %>    
+<% end %>

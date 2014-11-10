@@ -53,4 +53,23 @@ def activity
     # This is preliminary. See "" for the full implementation.
     Lesson.where("user_id = ?", id)
 end
+#method use to count user learen word
+def countword lessons
+	count=0
+	lessons.each{|lesson|
+	#count+=	lesson.lesson_words.count
+	count+=lesson.result.to_i
+	}
+	count
+end
+#check if user have learn on the lesson and compare and return the max result of the lesson
+def max_result lessons
+	max=0
+	lessons.each{|lesson|
+	if max < lesson.result.to_i 
+		max=lesson.result.to_i
+	end
+}
+max
+end
 end

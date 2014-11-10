@@ -14,10 +14,15 @@
     </aside>
     <div class="col-md-8">
     	<div>
-	  	<%= link_to "Words", "#", class: "btn btn-lg btn-primary" %>
+	  	<%= link_to "Words", words_path, class: "btn btn-lg btn-primary" %>
 		
-	  	<%= link_to "Lesson", "#", class: "btn btn-lg btn-primary" %>
-		</div>
+	  	<%= link_to "Lesson", categories_path, class: "btn btn-lg btn-primary" %>
+    </div>
+    <!--and also show their activity-->
+      <h3>Activities</h3>
+      <!--load the file _activity.html.erb which locate at app/view/shared/-->
+      <%= render 'shared/activity' %>
+    </div>
     </div>
   </div>
 <% else %>

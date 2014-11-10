@@ -9,5 +9,4 @@ class Lesson < ActiveRecord::Base
   validates :user_id, presence: true
   #make sure category id is valied
   validates :category_id, presence: true
-  #validates :result, presence: true
 end

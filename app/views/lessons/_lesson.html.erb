@@ -1,0 +1,14 @@
+<!--set up some style to user-->
+<li id="lesson-<%= lesson.id %>">
+  <!--show user picture with its size-->
+  <%= link_to gravatar_for(lesson.user, size: 50), lesson.user %>
+  <!--show user name-->
+  <span class="user"><%= link_to lesson.user.name, lesson.user %></span>
+  <span class="content">
+  <!--show user learned words count in each lesson with date learning-->
+  <!--count the word in Lessonword and / with the count the total word in category-->
+  Learned <%= lesson.result %>/<%=Word.where(category_id:lesson.category.id).count%> words in Lesson "<%=lesson.category.name%>" 	
+    	-( <%= Date.parse (lesson.created_at.to_s) %>)
+  	</span>
+  </span>  
+</li>
