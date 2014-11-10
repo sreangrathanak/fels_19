@@ -3,19 +3,15 @@ Rails.application.routes.draw do
   root "static_pages#home" 
   get "help"    => "static_pages#help"
   get "about"   => "static_pages#about"
-  get "contact" => "static_pages#contact"
-  #get 'users/new'
+  get "contact" => "static_pages#contact"  
   get "signup"  => "users#new"
-  #make route for user login out out
-  #get 'sessions/new'
   get "login" => "sessions#new"
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"
   resources :categories
   resources :lessons
   resources :words
-  resources :lesson_words
-  #to make users have full ability like: index,delete,post ,get, update
+  resources :lesson_words  
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

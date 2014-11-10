@@ -1,26 +1,21 @@
-<!--set the title bar with word Log in-->
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
-<!--set some style in to form-->
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-  	<!--create form user sign in-->
-    <%= form_for(:session, url: login_path) do |f| %>
-    	<!--add label email and text field email into form-->
-      <%= f.label :email %>
-      <%= f.text_field :email, class: 'form-control' %>
-      	<!--add label password and text password field  into form-->
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-		<!--add check box remember me-->
-	  <%= f.label :remember_me, class: "checkbox inline" do %>
-          <%= f.check_box :remember_me %>
-           <span>Remember me on this computer</span>
-          <% end %>
-         <!--add button Login into form-->
-       <%= f.submit "Log in", class: "btn btn-primary" %>
-      <% end %>
-      <!--show the link go to sign up if user not yet create-->
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  <h1>Log in</h1>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">  	
+      <%= form_for(:session, url: login_path) do |f| %>    	
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control" %>      	
+              
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
+	
+	      <%= f.label :remember_me, class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>            
+          <span>Remember me on this computer</span>
+        <% end %>         
+        
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+      <% end %>      
+      <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    </div>
   </div>
-</div>

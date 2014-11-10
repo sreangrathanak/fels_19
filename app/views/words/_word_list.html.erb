@@ -1,10 +1,9 @@
-    <b>Word</b><i>its meaning(in italic)</i><br>
-    <%if @words.nil?%>
-    <%else%> 
+<b>Word</b><i>its meaning(in italic)</i><br>
+  <%unless @words.nil?%>    
     <% @words.each do |word| %>
-        <b><%= word.content %></b>
-        <%word_answer=WordAnswer.find_by(word_id:word.id,correct:true) %>      
-        <i><%=word_answer.content%></i>
-        <br>      
+      <b><%= word.content %></b>
+      <%word_answer=WordAnswer.find_by(word_id:word.id,correct:true) %>      
+      <i><%=word_answer.content%></i>
+      <br>      
     <% end %>    
-    <%end%>
+  <%end%>
