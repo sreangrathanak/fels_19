@@ -1,0 +1,50 @@
+<% provide(:title, @lesson.category.name)%>
+  <h3><%=@lesson.category.name%></h3>             
+    <%= form_for(@lesson, method: :put) do |f| %>             
+      <%num_learned_word=0%>
+      <%@lesson.lesson_words.each do |lesson_word|%>
+        <%num_learned_word+=1%>        
+        <div id="word-<%=num_learned_word%>">
+          <p>
+            <i>
+              You have learned <%= num_learned_word %> / <%=@lesson.lesson_words.count%> words      
+            </i>
+          </p>                  
+          <div class="row">
+            <div class="col-md-5 col-md-offset-3">
+              <div class = "col-sm-10">                      
+                  <center><h1><div id="word_content-<%=num_learned_word%>"><%=lesson_word.word.content %></div></h1></center>                               
+                  <%lesson_word.word.word_answers.each do |word_answer|%>              
+                    <%= radio_button_tag :"#{lesson_word.word.id}",word_answer.id,:checked =>true%>
+                    <%= label_tag :"#{lesson_word.word.id}",word_answer.content%>        
+                  <%end%>                         
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>        
+      <%= label_tag "Next","Next",id:"btnNext",class:"button btn btn-primary" %>    
+      <%=f.submit "Submit",id:"btnSubmit",class:"btn btn-primary"%>   
+    <%end %>    
+
+    <script type="text/javascript">
+    var num=1; 
+      hide_word();      
+      $("#btnSubmit").hide();      
+      $(".button").on("click", function(){          
+        $("#word-"+num).hide();
+        $("#word-"+(num+1)).show();
+        num+=1;
+        if(num><%=@lesson.lesson_words.count%>){          
+          $("#word-"+(num-1)).css("display","block");
+          $("#btnNext").hide();
+          $("#btnSubmit").show();
+        }
+      }); 
+
+      function hide_word(){
+        for(var i=2;i<=<%=@lesson.lesson_words.count%>;i++){
+          $("#word-"+i).hide();
+        }  
+      }
+  </script>

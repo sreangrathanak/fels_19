@@ -1,0 +1,11 @@
+<% provide(:title, "Result of #{@lesson.category.name}")%>
+  <h1><center><%=@lesson.category.name%> Result <%=@lesson.result%>/<%=@lesson.lesson_words.count%></center></h1>	
+	<%@lesson.lesson_words.each do |lesson_word|%>	  
+	   <p>
+	     <b><%=lesson_word.word.content%></b> :	    
+	     <i><%=lesson_word.word_answer.content%></i> :	    
+	     <small><%=lesson_word.word_answer.correct%></small>
+	   </p>
+	   <hr>
+	<%end%>
+	<%= link_to "Start New Lesson", categories_path, class: "btn btn-lg btn-primary" %>	

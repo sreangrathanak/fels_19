@@ -2,8 +2,8 @@
   <div class = "">  
     <h3><%= category.name %></h3>    
     <p>
-      <i>
-        You have learned <%= current_user.max_result current_user.lessons.where(id:category.id) %> / <%=category.words.count%> words
+      <i>        
+        You have learned <%= current_user.lesson_words(category).count %> / <%=category.words.count%> words
       </i>
     </p>    
     <%words=category.words%>
@@ -11,5 +11,5 @@
       <p><%= word.content %></p>
     <%end%>
   </div>    
-  <%= link_to "Start", "#", class: "" %>    
+  <%= link_to "Start", new_lesson_path(category_id: category.id), class: "" %>    
 <% end %>
