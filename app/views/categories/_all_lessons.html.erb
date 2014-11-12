@@ -3,13 +3,13 @@
     <h3><%= category.name %></h3>    
     <p>
       <i>        
-        You have learned <%= current_user.lesson_words(category).count %> / <%=category.words.count%> words
+        You have learned <%= current_user.lesson_words.in_category(category).count %> / <%=category.words.count%> words
       </i>
     </p>    
     <%words=category.words%>
     <% words.each do |word|%>    
       <p><%= word.content %></p>
     <%end%>
-  </div>    
-  <%= link_to "Start", new_lesson_path(category_id: category.id), class: "" %>    
+  </div>      
+  <%= button_to "Start", { controller:"lessons",action: "create",category_id: category.id } %>
 <% end %>

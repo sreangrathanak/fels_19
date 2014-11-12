@@ -26,12 +26,9 @@ class User < ActiveRecord::Base
 	update_attribute(:remember_digest,nil)
   end
   def activity
-    Lesson.where("user_id = ?", id).lesson_order
+    Lesson.user_lesson id
   end
-  def lesson_words category        
-    all_lesson_words.where(lesson_id: Lesson.select(:id).where(category_id:category.id))
-  end  
-  def all_lesson_words
-    LessonWord.select(:word_id).where(lesson_id: Lesson.select(:id).where(user_id:id))
-  end
+  def lesson_words
+    LessonWord.user_lesson_words id    
+  end    
 end

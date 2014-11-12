@@ -1,11 +1,17 @@
 class LessonWord < ActiveRecord::Base
   belongs_to :lesson
-  has_many :word
-  has_many :word_answer  
-  def word
-    Word.find_by(id:word_id)
-  end
-  def word_answer
-    WordAnswer.find_by(id:word_answer_id)
-  end  
+  belongs_to :word
+  belongs_to :word_answer  
+  
+  scope :in_category,-> category{
+  	where(lesson_id: Lesson.select(:id).where(category_id:category.id))
+  }
+
+  scope :correct_answers,->{
+  	where word_answer_id: WordAnswer.answer_correct  
+  }
+
+  scope :user_lesson_words,->user_id{
+    select(:word_id).where(lesson_id: Lesson.select(:id).where(user_id:user_id))
+  }
 end

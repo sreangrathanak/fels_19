@@ -1,39 +1,41 @@
 class LessonsController < ApplicationController
-  def new	
-	@category=Category.find params[:category_id]	
-	@words = @category.words.order("RAND()").limit 20	
-  @lesson=create_lesson
-  create_lesson_word 	
-  redirect_to @lesson
+
+  def create	
+
+    category=Category.find params[:category_id]	
+    words = category.words.order("RAND()").limit 20	
+    @lesson= Lesson.new(user_id:current_user.id,category_id:category.id)
+    words.each do |word|
+      @lesson.lesson_words.build word_id: word.id, word_answer_id: 0
+    end
+    if @lesson.save               
+      redirect_to @lesson
+    else
+      flash[:danger]="Can not start the lesson!"
+      redirect_to @lesson.category
+    end    
   end
+  
   def show
-  	@lesson=Lesson.find params[:id]
-  end
-  def update
+
     @lesson=Lesson.find params[:id]
-    update_lesson_word     
-    render "result"
+
   end
-  private
-  def create_lesson
-    Lesson.create! user_id:current_user.id,category_id:@category.id
+
+  def update
+
+    @lesson=Lesson.find params[:id]
+    if @lesson.update_attributes lesson_params      
+      @lesson.update_attributes result:@lesson.lesson_words.correct_answers.count      
+      render "result"
+    else
+      render "show"
+    end       
   end
-  def create_lesson_word 
-    @words.each do |word|
-      LessonWord.create! lesson_id:@lesson.id,word_id:word.id
-    end
-  end
-  def update_lesson_word
-    result=0
-    @lesson.lesson_words.each do |lesson_word|
-      lesson_word.update word_answer_id:params[:"#{lesson_word.word.id}"]
-      if lesson_word.word_answer.correct
-        result +=1
-      end
-    end
-    update_lesson result
-  end
-  def update_lesson result
-    @lesson.update result:result
+
+  private 
+
+  def lesson_params
+    params.require(:lesson).permit :id, lesson_words_attributes: [:id, :word_answer_id]
   end
 end
