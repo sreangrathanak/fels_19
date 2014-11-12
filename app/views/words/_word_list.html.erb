@@ -6,7 +6,7 @@
         <th>its meaning(in italic)</th>                  
       </tr>
       <% @words.each do |word| %>
-        <%word_answer=WordAnswer.find_by(word_id:word.id,correct:true) %>
+        <%word_answer=word.word_answers.correct %>
         <tr>                  
           <td><b><%= word.content %></b></td>
           <td><i><%=word_answer.content%></i></td>                  

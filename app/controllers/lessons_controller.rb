@@ -1,7 +1,6 @@
 class LessonsController < ApplicationController
 
   def create	
-
     category=Category.find params[:category_id]	
     words = category.words.order("RAND()").limit 20	
     @lesson= Lesson.new(user_id:current_user.id,category_id:category.id)
@@ -17,13 +16,10 @@ class LessonsController < ApplicationController
   end
   
   def show
-
     @lesson=Lesson.find params[:id]
-
   end
 
   def update
-
     @lesson=Lesson.find params[:id]
     if @lesson.update_attributes lesson_params      
       @lesson.update_attributes result:@lesson.lesson_words.correct_answers.count      
@@ -31,13 +27,12 @@ class LessonsController < ApplicationController
     else
       render "show"
     end       
+
   end
 
   private 
 
   def lesson_params
-
     params.require(:lesson).permit :id, lesson_words_attributes: [:id, :word_answer_id]
-
   end
 end

@@ -5,11 +5,10 @@
       <i>        
         You have learned <%= current_user.lesson_words.in_category(category).count %> / <%=category.words.count%> words
       </i>
-    </p>    
-    <%words=category.words%>
-    <% words.each do |word|%>    
-      <p><%= word.content %></p>
-    <%end%>
+      <p>
+      <%=category.description%>
+      </p>
+    </p>        
   </div>      
-  <%= button_to "Start", { controller:"lessons",action: "create",category_id: category.id } %>
+  <%= button_to "Start", { controller:"lessons",action: "create",category_id: category.id },class: "btn btn-primary btn-start-lesson" %>
 <% end %>

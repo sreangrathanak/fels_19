@@ -1,9 +1,7 @@
 class Word < ActiveRecord::Base
   belongs_to :category  
-  has_many :word_answer 
-  def word_answers
-    WordAnswer.where(word_id:id)
-  end  
+  has_many :word_answers 
+ 
   scope :learned_word, ->(user, category) {
     word_id_query = LessonWord.select("word_id")
       .where(lesson_id: Lesson.select("id").where(user_id: user.id))
