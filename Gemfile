@@ -3,6 +3,11 @@ source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "4.1.6"
+#User gem faker to create user and store into database by using seed
+gem "faker", "1.4.2"
+# Use gem will_paginate and bootstrap-will_paginate for page slide bar
+gem "will_paginate", "3.0.7"
+gem "bootstrap-will_paginate", "0.0.10"
 # Use for making dynamic stylesheets
 gem "bootstrap-sass",       "3.2.0.0"
 # Use sqlite3 as the database for Active Record
@@ -29,12 +34,10 @@ gem "sdoc", "~> 0.4.0",          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem "spring",        group: :development
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
+#Use for have secure password
+gem "bcrypt-ruby", "3.1.1.rc1", :require => "bcrypt"
 # Use unicorn as the app server
-# gem 'unicorn'
+gem "unicorn"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
