@@ -1,4 +1,5 @@
 class LessonsController < ApplicationController
+before_action :logged_in_user, only:[:create,:show,:update]
 
   def create	
     category=Category.find params[:category_id]	

@@ -6,4 +6,10 @@ module ApplicationHelper
       redirect_to login_url
     end
   end
+  def logged_in_user_admin 
+    unless logged_in?              
+      flash[:danger]="Please log in."        
+      redirect_to admin_login_path
+    end
+  end
 end

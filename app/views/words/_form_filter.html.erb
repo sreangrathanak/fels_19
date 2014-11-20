@@ -1,22 +1,19 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-3">
 	<%= form_tag(words_path, method: :get, class: "form-horizontal col-md-6") do %>	
-	  <div class = "form-group">
-	    <%= label_tag :category, "Category: ",class: "col-sm-2 control-label" %>
-	    <div class = "col-sm-10" >
-		  <%= select_tag(:category_id,
-		  options_from_collection_for_select(@categories, "id", "name", params[:category_id]),class: "form-control") %>	
-	    </div>
-      </div>
-      <div class = "form-group">	   
-	    <div class = "col-sm-2" >	
+	  <div class = "form-group">	    
+	    <div class = "col-sm-25" >		  
 	      <table>
 	        <tr>
-		      <td><%= radio_button_tag :condition, "learned" %></td>
+	          <th><%= label_tag :category, "Category: ",class: "col-sm-2 control-label" %></th>
+	        </tr>
+	        <tr>
+	          <td><%= select_tag(:category_id,options_from_collection_for_select(@categories, "id", "name", params[:category_id]),class: "form-control") %></td>
+		      <td><%= radio_button_tag :condition, "learned",checked=(@option.nil? ? "false" : (@option=="learned") ) %></td>
 		      <td><%= label_tag :label_condition,"Learned"%></td>
-		      <td><%= radio_button_tag :condition, "notlearned" %></td>
+		      <td><%= radio_button_tag :condition, "notlearned",checked=(@option.nil? ? "false" : (@option=="notlearned")) %></td>
 		      <td><%= label_tag :label_condition,"NotLearned"%></td>
-		      <td><%= radio_button_tag :condition, "all" %></td>
+		      <td><%= radio_button_tag :condition, "all" ,checked=(@option.nil? ? "true" : (@option=="all") )%></td>
 		      <td><%= label_tag :label_condition,"All"%></td>
 		    </tr>
 		  </table>					
