@@ -2,14 +2,14 @@
   <div class = "">  
     <h3><%= category.name %></h3>    
     <p>
-      <i>
-        You have learned <%= current_user.max_result current_user.lessons.where(id:category.id) %> / <%=category.words.count%> words
+      <i>        
+        You have learned <%= current_user.lesson_words.in_category(category).count %> / <%=category.words.count%> words
       </i>
     </p>    
     <%words=category.words%>
     <% words.each do |word|%>    
       <p><%= word.content %></p>
     <%end%>
-  </div>    
-  <%= link_to "Start", "#", class: "" %>    
+  </div>      
+  <%= button_to "Start", { controller:"lessons",action: "create",category_id: category.id } %>
 <% end %>

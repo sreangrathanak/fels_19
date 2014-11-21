@@ -26,22 +26,9 @@ class User < ActiveRecord::Base
 	update_attribute(:remember_digest,nil)
   end
   def activity
-    Lesson.where("user_id = ?", id)
+    Lesson.user_lesson id
   end
-  def countword lessons
-	count=0
-	lessons.each{|lesson|	
-	  count+=lesson.result.to_i
-	}
-	count
-  end
-  def max_result lessons
-	max=0
-	lessons.each{|lesson|
-	  if max < lesson.result.to_i 
-		max=lesson.result.to_i
-	  end
-	}
-	max
-  end
+  def lesson_words
+    LessonWord.user_lesson_words id    
+  end    
 end
