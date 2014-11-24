@@ -1,17 +1,16 @@
-  
   <%unless @words.nil?%>          
-  <table border="1" width="60%" align="center">
-    <caption>Found <%=@option%> words = <%=@words.count%> words</caption>
-    <tr width="20%">
-      <th>Word</th>
-      <th>its meaning(in italic)</th>                  
-    </tr>
-    <% @words.each do |word| %>
-      <%word_answer=WordAnswer.find_by(word_id:word.id,correct:true) %>
-      <tr>                  
-        <td><b><%= word.content %></b></td>
-        <td><i><%=word_answer.content%></i></td>                  
+    <table border="1" width="60%" align="center">
+      <caption>Found <%=@option%> words = <%=@words.count%> words</caption>
+      <tr width="20%">
+        <th>Word</th>
+        <th>its meaning(in italic)</th>                  
       </tr>
-    <% end %>   
-  </table>  
+      <% @words.each do |word| %>
+        <%word_answer=word.word_answers.correct %>
+        <tr>                  
+          <td><b><%= word.content %></b></td>
+          <td><i><%=word_answer.content%></i></td>                  
+        </tr>
+      <% end %>   
+    </table>  
   <%end%>

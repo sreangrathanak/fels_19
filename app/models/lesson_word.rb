@@ -8,7 +8,7 @@ class LessonWord < ActiveRecord::Base
   }
 
   scope :correct_answers,->{
-  	where word_answer_id: WordAnswer.answer_correct  
+  	where word_answer_id: WordAnswer.where(correct: true)  
   }
 
   scope :user_lesson_words,->user_id{

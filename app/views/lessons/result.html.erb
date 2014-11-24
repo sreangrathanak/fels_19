@@ -1,11 +1,18 @@
-<% provide(:title, "Result of #{@lesson.category.name}")%>
-  <h1><center><%=@lesson.category.name%> Result <%=@lesson.result%>/<%=@lesson.lesson_words.count%></center></h1>	
-	<%@lesson.lesson_words.each do |lesson_word|%>	  
-	   <p>
-	     <b><%=lesson_word.word.content%></b> :	    
-	     <i><%=lesson_word.word_answer.content%></i> :	    
-	     <small><%=lesson_word.word_answer.correct%></small>
-	   </p>
-	   <hr>
-	<%end%>
-	<%= link_to "Start New Lesson", categories_path, class: "btn btn-lg btn-primary" %>	
+<% provide(:title, "Result of #{@lesson.category.name}")%>	
+	 <table border="1" width="50%" align="center">
+      <caption><h1><%=@lesson.category.name%> Result <%=@lesson.result%>/<%=@lesson.lesson_words.count%></h1></caption>
+      <tr width="20%">
+        <th>Word</th>
+        <th>Your answer(in italic)</th>                  
+        <th>Result</th>
+      </tr>
+      <%@lesson.lesson_words.each do |lesson_word|%>	  
+        <tr>                  
+          <td><b><%=lesson_word.word.content%></b></td>
+          <td><i><%=lesson_word.word_answer.content%></i></td>                  
+          <td><small><%=lesson_word.word_answer.correct%></small></td>
+        </tr>
+      <% end %>   
+    </table> 
+    <br/>
+    <center><%= link_to "Start Next Lesson", categories_path, class: "btn btn-primary" %></center>

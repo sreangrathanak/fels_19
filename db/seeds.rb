@@ -15,7 +15,8 @@ User.create!(name:  "Rathanak Jame",
 end
 10.times do |n|  
   name=Faker::Lorem.sentence(1)  
-  Category.create!(name:name)
+  description=Faker::Lorem.sentence(5)
+  Category.create!(name:name,description:description)
 end
 
 users=User.order(:created_at).take(2)
