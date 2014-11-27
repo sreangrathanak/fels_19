@@ -1,0 +1,13 @@
+<% provide(:title, @category.name) %>
+  <h3><%=@category.name%></h3>
+  <p><%=@category.description%></p>
+  <%= link_to "Add New Word", new_admin_word_path(category_id: @category.id) ,class:"btn btn-primary"%>
+  <%= link_to "Update this category", edit_admin_category_path(@category),class:"btn btn-primary"%>
+  <%=link_to "Delete this category", admin_category_path(@category), method: :delete, data: {confirm: "You sure?"},class:"btn btn-primary"%>
+  <% if @category.words.any? %>  
+    <h3>Words</h3>      
+    <ul class="words">
+      <%= render @words %>
+    </ul>
+    <%= will_paginate @words %>
+  <% end %>

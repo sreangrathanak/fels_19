@@ -184,7 +184,7 @@ aside {
   padding: 0;
   li {
     padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    /*border-top: 1px solid #e8e8e8;*/
   }
   .user {
     margin-top: 5em;
@@ -239,4 +239,18 @@ td{
     width:40%;
   }
 }
-
+.categories, .words {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.word_answers{
+  width:30%;
+  margin: 10px auto;
+}
+.user_style{
+  border-left: 1px solid #e8e8e8;
+}

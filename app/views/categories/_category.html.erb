@@ -10,5 +10,7 @@
       </p>
     </p>        
   </div>      
-  <%= button_to "Start", { controller:"lessons",action: "create",category_id: category.id },class: "btn btn-primary btn-start-lesson" %>
+  <%if category.words.count>0%>
+    <%= button_to "Start", { controller:"lessons",action: "create",category_id: category.id },class: "btn btn-primary btn-start-lesson" %>
+  <%end%>
 <% end %>
