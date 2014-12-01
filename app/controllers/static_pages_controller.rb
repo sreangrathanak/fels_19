@@ -8,5 +8,14 @@ class StaticPagesController < ApplicationController
   end
 
   def help
+  	@static_page=StaticPage.first
+  end
+
+  def about
+  	@static_page=StaticPage.first
+  end
+
+  def contact
+  	@static_page=StaticPage.first
   end
 end

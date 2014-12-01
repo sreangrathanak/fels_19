@@ -1,5 +1,5 @@
 <% provide(:title, "Help") %>
   <center>
 	<h3>Welcome to E-Learning System Help Page</h3>	
-	<p>If you have any problems, you can freely contact us throw e-mail:sreangrathanake@gmail.com. </p>
+	<p><%=@static_page.help unless @static_page.nil?%></p>
   </center>

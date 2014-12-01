@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124041932) do
+ActiveRecord::Schema.define(version: 20141201031855) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 20141124041932) do
 
   add_index "lessons", ["category_id"], name: "index_lessons_on_category_id", using: :btree
   add_index "lessons", ["user_id"], name: "index_lessons_on_user_id", using: :btree
+
+  create_table "static_pages", force: true do |t|
+    t.string   "help"
+    t.string   "about"
+    t.string   "contact"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
