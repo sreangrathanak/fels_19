@@ -1,0 +1,11 @@
+<% provide(:title, "Edit StaticPages Help") %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">    
+     <h1 class="account_info">Update Static Pages Help</h1>
+      <%=  form_tag admin_help_path,:method=>"get" do %>            
+        <%= label_tag :help %>
+        <%= text_area_tag :help, "#{@static_page.help unless @static_page.nil?}",class: "form-control field_info" %>
+        <%= submit_tag"Save changes", class: "btn btn-primary btn_commit" %>
+      <% end %>    
+    </div>      
+  </div>
