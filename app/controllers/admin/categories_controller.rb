@@ -17,12 +17,12 @@ before_action :admin_user, only:[:index, :edit, :update,:destroy, :show]
   end
 
   def index  	
-  	@categories=Category.paginate page: params[:page], per_page: 10    
+  	@categories=Category.order_by_created_date.paginate page: params[:page], per_page: 10    
   end
 
   def show
   	@category=Category.find params[:id]
-  	@words=@category.words.paginate page: params[:page], per_page: 20    
+  	@words=@category.words.order_by_created_date.paginate page: params[:page], per_page: 20    
   end
 
   def edit
@@ -31,6 +31,7 @@ before_action :admin_user, only:[:index, :edit, :update,:destroy, :show]
 
   def update
   	@category = Category.find params[:id]    
+    @words=@category.words.order_by_created_date.paginate page: params[:page], per_page: 20    
     if @category.update_attributes category_params      
       flash[:success]="Category update"      
       render "show"

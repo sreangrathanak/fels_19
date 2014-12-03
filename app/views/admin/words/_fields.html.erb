@@ -1,7 +1,7 @@
 
 <%= render "shared/error_messages" ,object: f.object %>
   <%= f.label "Category" %>
-  <%= f.select(:category_id,options_from_collection_for_select(@categories, "id", "name", @word.category.nil? ? (params[:category_id].nil? ? 1 : params[:category_id]) : @word.category.id ),class: "form-control ") %>	
+  <%= f.select(:category_id,options_from_collection_for_select(@categories, "id", "name", @word.category.nil? ? (params[:category_id].nil? ? 1 : params[:category_id]) : @word.category.id ),class: "form-control") %>	
   <%= f.label :content %>
   <%= f.text_field :content, class: "form-control field_info" %>      
   <%=f.fields_for :word_answers do |f2|%>

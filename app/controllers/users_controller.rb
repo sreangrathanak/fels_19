@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show  	
     @user=User.find params[:id]  	
-    @lessons = @user.lessons.paginate page: params[:page]
+    @lessons = @user.lessons.order_by_created_date.paginate page: params[:page]
   end
 
   def create    

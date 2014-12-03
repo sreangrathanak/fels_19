@@ -1,8 +1,8 @@
 class Admin::SessionsController < ApplicationController
-  def new
+  def new    
   end
 
-  def create
+  def create    
   	user=User.find_by(email: params[:session][:email].downcase)  	        
     if user && user.authenticate(params[:session][:password]) && user.isadmin    
       log_in user     

@@ -17,6 +17,7 @@ before_action :admin_user, only:[:index, :edit, :update,:destroy, :show]
       flash[:success]="Word #{@word.content} created!"        
       render "show"
     else 
+      @categories=Category.all  
       render "new"
     end
   end
@@ -31,7 +32,8 @@ before_action :admin_user, only:[:index, :edit, :update,:destroy, :show]
     if @word.update_attributes word_params            
       render "show"
     else      
-      render "show"
+      @categories=Category.all
+      render "edit"
     end 
   end
 
@@ -40,7 +42,7 @@ before_action :admin_user, only:[:index, :edit, :update,:destroy, :show]
   end
 
   def index
-  	@words=Word.paginate page: params[:page], per_page: 20
+  	@words=Word.order_by_created_date.paginate page: params[:page], per_page: 20
   end
 
   def destroy
