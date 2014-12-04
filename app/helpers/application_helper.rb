@@ -7,7 +7,7 @@ module ApplicationHelper
     end
   end
   def logged_in_user_admin 
-    unless logged_in?              
+    unless logged_in_admin?              
       flash[:danger]="Please log in."        
       redirect_to admin_login_path
     end

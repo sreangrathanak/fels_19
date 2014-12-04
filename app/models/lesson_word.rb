@@ -3,6 +3,9 @@ class LessonWord < ActiveRecord::Base
   belongs_to :word
   belongs_to :word_answer  
   
+  validates :word_id, presence: true  
+  validates :word_answer_id, presence: true  
+  
   scope :in_category,-> category{
   	where(lesson_id: Lesson.select(:id).where(category_id:category.id))
   }
