@@ -15,7 +15,7 @@ User.create!(name:  "Rathanak Jame",
 end
 10.times do |n|  
   name=Faker::Lorem.sentence(1)  
-  description=Faker::Lorem.sentence(5)
+  description=Faker::Lorem.sentences(2..5)
   Category.create!(name:name,description:description)
 end
 
@@ -27,12 +27,13 @@ users.each{|user|
     Lesson.create!(user_id:user.id,category_id:category_id,result:result)
   end
 }
-
-200.times do |n|    
-  content=Faker::Lorem.word    
-  category_id= Random.new.rand 1..10    
-  Word.create!(content:content, category_id:category_id)
-end
+categories=Category.all
+categories.each{|category|
+  200.times do |n|    
+    content=Faker::Lorem.word    
+    Word.create!(content:content, category_id:category.id)
+  end
+}
 
 words=Word.all
 words.each {|word|  

@@ -1,16 +1,16 @@
-<% provide(:title, "Result of #{@lesson.category.name}")%>	
+<% provide(:title, "Result of #{@lesson_result.category.name}")%>	
 	 <table border="1" width="50%" align="center">
-      <caption><h1><%=@lesson.category.name%> Result <%=@lesson.result%>/<%=@lesson.lesson_words.count%></h1></caption>
+      <caption><h1><%=@lesson_result.category.name%> Result <%=@lesson_result.result%>/<%=@lesson_result.lesson_words.count%></h1></caption>
       <tr width="20%">
         <th>Word</th>
         <th>Your answer(in italic)</th>                  
         <th>Result</th>
       </tr>
-      <%@lesson.lesson_words.each do |lesson_word|%>	  
+      <%@lesson_result.lesson_words.each do |lesson_word|%>	  
         <tr>                  
           <td><b><%=lesson_word.word.content%></b></td>
           <td><i><%=lesson_word.word_answer.content%></i></td>                  
-          <td><small><%=lesson_word.word_answer.correct%></small></td>
+          <td><div class="<%=lesson_word.word_answer.correct? ? "glyphicon glyphicon-ok success-sign" : "glyphicon glyphicon-remove danger-sign"%>"></div></td>
         </tr>
       <% end %>   
     </table> 

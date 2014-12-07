@@ -1,0 +1,12 @@
+<% @lesson_results.each do |lesson_result| %>
+  <li>  
+    <%= link_to gravatar_for(lesson_result.user, size: 50), lesson_result.user %>  
+    <span class="user"><%= link_to lesson_result.user.name, lesson_result.user %>
+      <span class="content">      
+        got <%=lesson_result.result%>/<%=lesson_result.lesson_words.count%> words in Lesson "<%=lesson_result.category.name%>"   
+        -( <%= Date.parse (lesson_result.created_at.to_s) %>)
+        <%= link_to "View Result", result_path(lesson_result), class: "" %>
+      </span>
+    </span> 
+  </li>
+<% end %>

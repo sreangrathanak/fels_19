@@ -20,11 +20,15 @@ before_action :logged_in_user, only:[:create,:show,:update]
     @lesson=Lesson.find params[:id]
   end
 
+  def index
+    @lessons=current_user.lessons.order_by_created_date.paginate page: params[:page], per_page: 5
+  end
+
   def update
     @lesson=Lesson.find params[:id]
     if @lesson.update_attributes lesson_params      
       @lesson.update_attributes result:@lesson.lesson_words.correct_answers.count      
-      render "result"
+      redirect_to result_path @lesson
     else
       render "show"
     end       

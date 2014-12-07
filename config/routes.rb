@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   get "login" => "sessions#new"
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"
-  resources :comments
+  resources :results        ,only:[:index,:show]  
   resources :categories    ,only:[:index]
-  resources :lessons       ,except: [:index, :edit, :destroy]
+  resources :lessons       ,except: [:index,:edit, :destroy]
   resources :words         ,only:[:index] 
   resources :users         ,except: [:index, :destroy]
   

@@ -5,12 +5,12 @@
       <%@word.word_answers.each do |word_answer|%>
         <tr>
           <td><b><%=word_answer.content%></b></td>
-          <td><%=word_answer.correct? ? "Right" : "Wrong"%></td>
+          <td><div class="<%=word_answer.correct? ? "glyphicon glyphicon-ok success-sign" : "glyphicon glyphicon-remove danger-sign"%>"></td>
         </tr>
       <%end%>
     </table>    
     <p>In category <%=@word.category.nil? ? "No In Any Category" : (link_to @word.category.name, admin_category_path(@word.category))%>        
     </p>
-    <%= link_to "Update this word", edit_admin_word_path(@word),class:"btn btn-primary"%>        
-    <%=link_to "Delete this Word", admin_word_path(@word), method: :delete, data: {confirm: "You sure?"},class:"btn btn-primary"%>
+    <%= link_to "Update this word", edit_admin_word_path(@word),class:"btn btn btn-warning"%>        
+    <%=link_to "Delete this Word", admin_word_path(@word), method: :delete, data: {confirm: "You sure?"},class:"btn btn btn-danger"%>
   </div>

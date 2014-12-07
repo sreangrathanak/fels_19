@@ -1,5 +1,6 @@
+<%box_width=40%>
 <% @categories.each do |category| %>
-  <div class = "">  
+  <div class = "category" style="margin-left:<%=box_width%>%;">  
     <h3><%= category.name %></h3>    
     <p>
       <i>        
@@ -8,9 +9,10 @@
       <p>
       <%=category.description%>      
       </p>
-    </p>        
-  </div>      
-  <%if category.words.count>0%>
-    <%= button_to "Start", { controller:"lessons",action: "create",category_id: category.id },class: "btn btn-primary btn-start-lesson" %>
-  <%end%>
+    </p>      
+    <%if category.words.count>0%>
+      <%= button_to "Start", { controller:"lessons",action: "create",category_id: category.id },class: "btn btn-primary btn-start-lesson" %>
+    <%end%>     
+  </div>
+  <%box_width==40? box_width=0 : box_width=40%>
 <% end %>

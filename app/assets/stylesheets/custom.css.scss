@@ -9,14 +9,25 @@ $gray-medium-light: #eaeaea;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
+
+@media (min-width: 992px){
+  .container{
+    max-width:970px;    
+  }
+}
 /* universal */
 
 html {
   overflow-y: scroll;
 }
 
+.body{
+  padding-top: 10px;
+  background-color: #FFFFFF;
+}
 body {
   padding-top: 60px;
+  background-color: #D4D4D4;
 }
 
 section {
@@ -230,7 +241,7 @@ td{
   text-indent:10px;
 }
 .btn-start-lesson{
-  width: 10%;
+  width: 7em;
 }
 .lesson-form{
   width:30%;
@@ -253,4 +264,18 @@ td{
 }
 .user_style{
   border-left: 1px solid #e8e8e8;
+}
+.category{
+  margin-top:10px;  
+  padding:10px 10px 10px 10px;
+  width:50%;
+  background-color: #eee;
+  border: 1px solid #888;
+  border-radius: 3px;  
+}
+.danger-sign{
+  color:red;
+}
+.success-sign{
+  color:green; 
 }
